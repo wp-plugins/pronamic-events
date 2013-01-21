@@ -2,135 +2,177 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pronamic Events\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-31 10:39+0100\n"
-"PO-Revision-Date: 2012-05-31 10:41+0100\n"
-"Last-Translator: K.Tolsma <kareljan@pronamic.nl>\n"
+"POT-Creation-Date: 2013-01-18 11:19+0100\n"
+"PO-Revision-Date: 2013-01-18 11:19+0100\n"
+"Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;__ngettext:1,2;__withdesc;_ewithdesc;_c;_n_noop:1,2;__ngettext_noop:1,2;_x:2c,1;_nc:1,2;esc_attr_e;esc_html_e;esc_attr__;_nx:4c,1,2;_nx_noop:4c,1,2;esc_html_x:2c,1;esc_html__;_ex:2c,1\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;__ngettext:1,2;__withdesc;_ewithdesc;_c;"
+"_n_noop:1,2;__ngettext_noop:1,2;_x:2c,1;_nc:1,2;esc_attr_e;esc_html_e;"
+"esc_attr__;_nx:4c,1,2;_nx_noop:4c,1,2;esc_html_x:2c,1;esc_html__;_ex:2c,1\n"
 "X-Poedit-Basepath: ../\n"
-"X-Poedit-Language: Dutch\n"
-"X-Poedit-Country: NETHERLANDS\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: pronamic-events.php:35
+#: pronamic-events.php:38
+msgid "Start Date"
+msgstr "Startdatum"
+
+#: pronamic-events.php:39
+msgid "End Date"
+msgstr "Einddatum"
+
+#: pronamic-events.php:112
+msgctxt "slug"
+msgid "events"
+msgstr "agenda"
+
+#: pronamic-events.php:116
 msgctxt "post type general name"
 msgid "Events"
 msgstr "Evenementen"
 
-#: pronamic-events.php:36
+#: pronamic-events.php:117
 msgctxt "post type singular name"
 msgid "Event"
 msgstr "Evenement"
 
-#: pronamic-events.php:37
+#: pronamic-events.php:118
 msgctxt "event"
 msgid "Add New"
-msgstr "Nieuwe toevoegen"
+msgstr "Nieuw evenement"
 
-#: pronamic-events.php:38
+#: pronamic-events.php:119
 msgid "Add New Event"
 msgstr "Nieuw evenement toevoegen"
 
-#: pronamic-events.php:39
+#: pronamic-events.php:120
 msgid "Edit Event"
 msgstr "Wijzig evenement"
 
-#: pronamic-events.php:40
+#: pronamic-events.php:121
 msgid "New Event"
-msgstr "Nieuw evenement"
+msgstr "Nieuw événement"
 
-#: pronamic-events.php:41
+#: pronamic-events.php:122
 msgid "View Event"
 msgstr "Bekijk evenement"
 
-#: pronamic-events.php:42
+#: pronamic-events.php:123
 msgid "Search Events"
 msgstr "Doorzoek evenementen"
 
-#: pronamic-events.php:43
+#: pronamic-events.php:124
 msgid "No events found"
 msgstr "Geen evenementen gevonden"
 
-#: pronamic-events.php:44
+#: pronamic-events.php:125
 msgid "No events found in Trash"
 msgstr "Geen evenementen gevonden in de prullenbak"
 
-#: pronamic-events.php:45
+#: pronamic-events.php:126
 msgid "Parent Event:"
-msgstr "Bovenliggende evenement:"
+msgstr "Bovenliggende événement:"
 
-#: pronamic-events.php:46
-msgid "Agenda"
-msgstr "Agenda"
+#: pronamic-events.php:127
+msgctxt "menu_name"
+msgid "Events"
+msgstr "Evenementen"
 
-#: pronamic-events.php:65
+#: pronamic-events.php:149
 msgctxt "class general name"
 msgid "Event categories"
-msgstr "Agenda categorieën"
+msgstr "Evenement categorieën"
 
-#: pronamic-events.php:66
+#: pronamic-events.php:150
 msgctxt "class singular name"
 msgid "Event category"
-msgstr "Agenda categorieën"
+msgstr "Evenement categorieën"
 
-#: pronamic-events.php:67
+#: pronamic-events.php:151
 msgid "Search Event categories"
 msgstr "Doorzoek categorieën"
 
-#: pronamic-events.php:68
+#: pronamic-events.php:152
 msgid "All Event categories"
 msgstr "Bekijk alle categorieën"
 
-#: pronamic-events.php:69
+#: pronamic-events.php:153
 msgid "Parent Event category"
 msgstr "Bovenliggende categorie:"
 
-#: pronamic-events.php:70
+#: pronamic-events.php:154
 msgid "Parent Event category:"
 msgstr "Bovenliggende categorie:"
 
-#: pronamic-events.php:71
+#: pronamic-events.php:155
 msgid "Edit Event category"
 msgstr "Wijzig categorie"
 
-#: pronamic-events.php:72
+#: pronamic-events.php:156
 msgid "Update Event category"
 msgstr "Update categorie"
 
-#: pronamic-events.php:73
+#: pronamic-events.php:157
 msgid "Add New Event category"
 msgstr "Nieuwe categorie toevoegen"
 
-#: pronamic-events.php:74
+#: pronamic-events.php:158
 msgid "New Event category Name"
 msgstr "Nieuwe categorie naam"
 
-#: pronamic-events.php:75
+#: pronamic-events.php:159
 msgid "Event categories"
-msgstr "Agenda categorieën"
+msgstr "Evenement categorieën"
 
-#: pronamic-events.php:96
-msgid "Event Dates"
-msgstr "Evenement data"
+#: pronamic-events.php:185
+msgid "Event Details"
+msgstr "Evenement details"
 
-#: pronamic-events.php:105
-msgid "Event Location"
-msgstr "Evenement locatie"
+#: pronamic-events.php:229
+msgid "Start Date:"
+msgstr "Startdatum:"
 
-#: pronamic-events.php:134
-msgid "Start date"
-msgstr "Startdatum"
+#: pronamic-events.php:235
+msgid "End Date:"
+msgstr "Einddatum:"
 
-#: pronamic-events.php:139
-msgid "End date"
-msgstr "Einddatum"
+#: pronamic-events.php:253
+msgid "Location:"
+msgstr "Locatie:"
 
-#~ msgid "Events"
+#: pronamic-events.php:260
+msgid "Website:"
+msgstr "Website:"
+
+#: pronamic-events.php:374
+msgid "Permalinks"
+msgstr "Permalinks"
+
+#: pronamic-events.php:381
+msgid "Event base"
+msgstr "Evenement basis"
+
+#: pronamic-events.php:400 admin/settings.php:12
+msgid "Events Settings"
+msgstr "Evenementen instellingen"
+
+#: pronamic-events.php:401
+msgid "Settings"
+msgstr "Instellingen"
+
+#~ msgid "Agenda"
 #~ msgstr "Agenda"
+
+#~ msgid "Start date"
+#~ msgstr "Startdatum"
+
+#~ msgid "End date"
+#~ msgstr "Einddatum"
 
 #~ msgid "iDEAL Settings"
 #~ msgstr "iDEAL instellingen"
@@ -343,7 +385,6 @@ msgstr "Einddatum"
 #~ msgstr "versie %s"
 
 #~ msgid "Configuration deleted."
-
 #~ msgid_plural "Configurations deleted."
 #~ msgstr[0] "Configuratie verwijderd."
 #~ msgstr[1] "Configuraties verwijderd."
@@ -578,7 +619,6 @@ msgstr "Einddatum"
 #~ msgstr "iDEAL feeds"
 
 #~ msgid "Feed deleted."
-
 #~ msgid_plural "Feeds deleted."
 #~ msgstr[0] "Feed verwijderd."
 #~ msgstr[1] "Feeds verwijderd."
@@ -772,9 +812,6 @@ msgstr "Einddatum"
 
 #~ msgid "Payments"
 #~ msgstr "Betalingen"
-
-#~ msgid "Settings"
-#~ msgstr "Instellingen"
 
 #~ msgid "Pages Generator"
 #~ msgstr "Pagina's generator"
@@ -1032,8 +1069,8 @@ msgstr "Einddatum"
 
 #~ msgid "Search Transactions"
 #~ msgstr "Zoek transacties"
-#~ msgctxt "link name"
 
+#~ msgctxt "link name"
 #~ msgid "Name"
 #~ msgstr "Naam"
 
@@ -1072,12 +1109,12 @@ msgstr "Einddatum"
 
 #~ msgid "Custom URL:"
 #~ msgstr "Maatwerk URL:"
-#~ msgctxt "post type general name"
 
+#~ msgctxt "post type general name"
 #~ msgid "Blocks"
 #~ msgstr "Blokken"
-#~ msgctxt "post type singular name"
 
+#~ msgctxt "post type singular name"
 #~ msgid "Block"
 #~ msgstr "Blok"
 

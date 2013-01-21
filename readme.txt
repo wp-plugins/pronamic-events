@@ -4,7 +4,7 @@ Tags: pronamic, events, agenda
 Donate link: http://pronamic.eu/donate/?for=wp-plugin-pronamic-events&source=wp-plugin-readme-txt
 Requires at least: 3.0
 Tested up to: 3.4.1
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 
 Pronamic Events is a basic plugin to add some Events functionality.
 
@@ -12,6 +12,27 @@ Pronamic Events is a basic plugin to add some Events functionality.
 == Description ==
 
 This plugin uses custom post types to add some Events functionality. Pronamic Events allows you to add, edit and remove events.
+
+= Template Functions =
+
+*	Start Date
+	*	pronamic_get_the_start_date( $format = null )
+	*	pronamic_the_start_date( $format = null )
+	*	pronamic_has_start_date()
+*	End Date
+	*	pronamic_get_the_end_date( $format = null )
+	*	pronamic_the_end_date( $format = null )
+	*	pronamic_has_end_date()
+*	Location
+	*	pronamic_get_the_location()
+	*	pronamic_the_location()
+	*	pronamic_has_location()
+
+= Meta Keys =
+
+*	_pronamic_start_date
+*	_pronamic_end_date
+*	_pronamic_location
 
 = Gravity Forms =
 
@@ -38,6 +59,12 @@ Upload the Pronamic Events folder to your wp-content/plugins folder.
 
 
 == Changelog ==
+
+= 0.1.2 =
+*	Added template functions for the location
+*	Improved the documentation in the readme.txt file
+*	Added admin sortable columns for start and end date
+*	Added settings page for events base slug
 
 = 0.1.1 =
 *	Added datepicker

@@ -27,27 +27,26 @@ class Pronamic_Events_Plugin {
 	 */
 	public function __construct( $file ) {
 		$this->file    = $file;
-		$this->dirname = dirname( $file );
+		$this->dirname = plugin_dir_path( $file );
 
 		register_activation_hook( $this->file, array( $this, 'flush_rewrite_rules' ) );
 
 		// Includes
+		require_once $this->dirname . '/includes/version.php';
 		require_once $this->dirname . '/includes/functions.php';
 		require_once $this->dirname . '/includes/gravityforms.php';
 		require_once $this->dirname . '/includes/template.php';
 
 		// Global
-		add_action( 'init',        array( $this, 'init' ) );
-		add_action( 'parse_query', array( $this, 'parse_query' ) );
+		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 
-		add_filter( 'request',     array( $this, 'request' ) );
+		add_action( 'init',           array( $this, 'init' ) );
 
-		// Post type
-		$post_type = 'pronamic_event';
+		add_action( 'widgets_init',   array( $this, 'widgets_init' ) );
 
-		add_filter( "manage_edit-{$post_type}_columns",          array( $this, 'manage_edit_columns' ) );
-		add_filter( "manage_edit-{$post_type}_sortable_columns", array( $this, 'manage_edit_sortable_columns' ) );
-		add_filter( "manage_{$post_type}_posts_custom_column",   array( $this, 'manage_posts_custom_column' ), 10, 2 );
+		add_action( 'parse_query',    array( $this, 'parse_query' ) );
+
+		add_filter( 'request',        array( $this, 'request' ) );
 
 		// Admin
 		if ( is_admin() ) {
@@ -69,14 +68,21 @@ class Pronamic_Events_Plugin {
 	//////////////////////////////////////////////////
 
 	/**
-	 * Initialize
+	 * Plugins loaded
 	 */
-	public function init() {
+	public function plugins_loaded() {
 		// Text domain
 		$rel_path = dirname( plugin_basename( $this->file ) ) . '/languages/';
 
 		load_plugin_textdomain( 'pronamic_events', false, $rel_path );
+	}
 
+	//////////////////////////////////////////////////
+
+	/**
+	 * Initialize
+	 */
+	public function init() {
 		// Post type
 		$slug = get_option( 'pronamic_event_base' );
 		$slug = empty( $slug ) ? _x( 'events', 'slug', 'pronamic_events' ) : $slug;
@@ -96,7 +102,7 @@ class Pronamic_Events_Plugin {
 				'parent_item_colon'  => __( 'Parent Event:', 'pronamic_events' ),
 				'menu_name'          => _x( 'Events', 'menu_name', 'pronamic_events' ),
 			),
-			'public'             => true ,
+			'public'             => true,
 			'publicly_queryable' => true,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
@@ -136,89 +142,10 @@ class Pronamic_Events_Plugin {
 	//////////////////////////////////////////////////
 
 	/**
-	 * Manage edit columns
-	 *
-	 * @param array $columns
+	 * Widgets initialize
 	 */
-	public function manage_edit_columns( $columns ) {
-		$new_columns = array();
-
-		if( isset( $columns['cb'] ) ) {
-			$new_columns['cb'] = $columns['cb'];
-		}
-
-		// $new_columns['thumbnail'] = __('Thumbnail', 'pronamic_companies');
-
-		if( isset( $columns['title'] ) ) {
-			$new_columns['title'] = $columns['title'];
-		}
-
-		if( isset( $columns['author'] ) ) {
-			$new_columns['author'] = $columns['author'];
-		}
-
-		if( isset( $columns['comments'] ) ) {
-			$new_columns['comments'] = $columns['comments'];
-		}
-
-		if( isset( $columns['date'] ) ) {
-			$new_columns['date'] = $columns['date'];
-		}
-
-		$new_columns['pronamic_start_date'] = __( 'Start Date', 'pronamic_events' );
-		$new_columns['pronamic_end_date']   = __( 'End Date', 'pronamic_events' );
-
-		return array_merge( $new_columns, $columns );
-	}
-
-	//////////////////////////////////////////////////
-
-	/**
-	 * Manage edit sortable columns
-	 *
-	 * @param array $columns
-	 */
-	public function manage_edit_sortable_columns( $columns ) {
-		$columns['pronamic_start_date'] = 'pronamic_start_date';
-		$columns['pronamic_end_date']   = 'pronamic_end_date';
-
-		return $columns;
-	}
-
-	//////////////////////////////////////////////////
-
-	/**
-	 * Manage posts custom column
-	 *
-	 * @param string $column_name
-	 * @param string $post_id
-	 */
-	function manage_posts_custom_column( $column_name, $post_id ) {
-		switch ( $column_name ) {
-			case 'pronamic_start_date' :
-				// @see http://translate.wordpress.org/projects/wp/3.5.x/admin/nl/default?filters[term]=Y%2Fm%2Fd&filters[user_login]=&filters[status]=current_or_waiting_or_fuzzy_or_untranslated&filter=Filter&sort[by]=priority&sort[how]=desc
-				// @see https://github.com/WordPress/WordPress/blob/3.5.1/wp-admin/includes/class-wp-posts-list-table.php#L572
-
-				$t_time = pronamic_get_the_start_date( __( 'Y/m/d g:i:s A', 'pronamic_events' ), $post_id );
-				$h_time = pronamic_get_the_start_date( __( 'Y/m/d', 'pronamic_events' ), $post_id );
-					
-				printf( '<abbr title="%s">%s</abbr>', $t_time, $h_time );
-
-				break;
-
-			case 'pronamic_end_date' :
-				// @see http://translate.wordpress.org/projects/wp/3.5.x/admin/nl/default?filters[term]=Y%2Fm%2Fd&filters[user_login]=&filters[status]=current_or_waiting_or_fuzzy_or_untranslated&filter=Filter&sort[by]=priority&sort[how]=desc
-				// @see https://github.com/WordPress/WordPress/blob/3.5.1/wp-admin/includes/class-wp-posts-list-table.php#L572
-
-				$t_time = pronamic_get_the_end_date( __( 'Y/m/d g:i:s A', 'pronamic_events' ), $post_id );
-				$h_time = pronamic_get_the_end_date( __( 'Y/m/d', 'pronamic_events' ), $post_id );
-					
-				printf( '<abbr title="%s">%s</abbr>', $t_time, $h_time );
-
-				break;
-
-			default:
-		}
+	public function widgets_init() {
+		register_widget( 'Pronamic_Events_Widget' );
 	}
 
 	//////////////////////////////////////////////////
@@ -231,7 +158,7 @@ class Pronamic_Events_Plugin {
 	 * @param array $request
 	 * @return array
 	 */
-	function request( $request ) {
+	public function request( $request ) {
 		if ( isset( $request['orderby'] ) && 'pronamic_start_date' == $request['orderby'] ) {
 			$request = array_merge( $request, array(
 				'meta_key' => '_pronamic_start_date',
@@ -253,15 +180,18 @@ class Pronamic_Events_Plugin {
 
 	/**
 	 * Parse query
+	 * 
+	 * @note In PHP 5.1.4, "today" means midnight today, and "now" means the current timestamp.
+	 * http://php.net/manual/en/function.strtotime.php#77541
 	 *
 	 * @param WP_Query $query
 	 */
-	function parse_query( $query ) {
+	public function parse_query( $query ) {
 		if ( ! is_admin() && is_pronamic_events_query( $query ) ) {
 			$meta_query_extra = array(
 				array(
 					'key'     => '_pronamic_end_date',
-					'value'   => strtotime( '-1 day' ),
+					'value'   => strtotime( 'today' ),
 					'compare' => '>',
 					'type'    => 'NUMERIC'
 				)
